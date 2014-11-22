@@ -48,7 +48,7 @@ JavaScript:
 grunt.loadNpmTasks('grunt-po2json-embed');
 ```
 
-## The "po2json-embed" task
+## The "po2jsonEmbed" task
 
 ### Overview
 In your project's Gruntfile, add a section named `po2jsonEmbed` to the data object passed into
@@ -98,21 +98,7 @@ Note: pluralisation is not supported. Instead use two strings and use Javascript
 
     tr("You have %1 follower" "You have %1 followers" numFollowers) - WRONG
 
-    tr("You have %1 follower") tr("You have %1 followers") - GOOD
-
-
-The reason this fails is because the input to the tr() function will be different every time
-
-
-### Context and Comments
-
-You can pass comments for your messages by using an options object. Examples:
-
-    tr("September", { comment: "Translators: use all lower-case if months are not " +
-                               "capitalized in your language" })
-
-    tr("Sept.", { comment: "Abbreviation of September" })
-
+    tr("You have %1 follower"),  tr("You have %1 followers") - GOOD
 
 ### Usage Examples
 

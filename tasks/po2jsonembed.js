@@ -14,14 +14,14 @@ module.exports = function(grunt) {
 
     var options = this.options({
       poFiles:'',
-      defaultLang : 'en'
+      defaultLanguage : 'en'
     });
 
-    var fs = require('fs');
-    var po2json = require('po2json');
-    var dir = options.poFiles;
-    var data = {};
-    var fn = options.functionName;
+    var fs = require('fs'),
+        po2json = require('po2json'),
+        dir = options.poFiles,
+        data = {},
+        fn = options.functionName;
 
     var files = fs.readdirSync(dir)
       .filter(function(file) { return file.substr(-3) === '.po'; })
@@ -38,22 +38,23 @@ module.exports = function(grunt) {
           });
       });
 
+      var content, newcontent;
+
       this.files.forEach(function (f) {
         f.src.forEach(function(file) {
 
-          var content = grunt.file.read(file);
-          var newcontent = null;
-
+          content = newcontent = grunt.file.read(file);
+          
           var replaceStrings = function(quote) {
               var regex = new RegExp("" + fn + "\\(((?:" + quote + "(?:[^" + quote + "\\\\]|\\\\.)+" + quote + "\\s*)+)\\)", "g");
               var subRE = new RegExp(quote + "((?:[^" + quote + "\\\\]|\\\\.)+)" + quote, "g");
               var quoteRegex = new RegExp("\\\\" + quote, "g");
 
-              newcontent = content.replace(regex, function(v) {
+              newcontent = newcontent.replace(regex, function(v) {
                 v = v.substr(fn.length+2);
                 v = v.substr(0,v.length-2);
                 var o = data[v] || {};
-                o[options.defaultLang] = v;
+                o[options.defaultLanguage] = v;
                 return JSON.stringify(o);
               });
           };
@@ -61,7 +62,7 @@ module.exports = function(grunt) {
           replaceStrings("'");
           replaceStrings('"');
 
-          if (newcontent && content !== newcontent) {
+          if (newcontent !== content) {
             grunt.log.writeln('Embedded translations: '+file);
             grunt.file.write(file, newcontent);
           }
