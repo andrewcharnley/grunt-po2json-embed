@@ -1,0 +1,47 @@
+{
+  "name": "grunt-po2json-embed",
+  "description": "Grunt plugin which takes PO files, creates JSON language and embeds into the original files.",
+  "version": "0.1",
+  "homepage": "https://github.com/andrewcharnley/grunt-po2json-embed",
+  "author": {
+    "name": "Andrew Charnley",
+    "email": "github@andrewcharnley.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andrewcharnley/grunt-po2json-embed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewcharnley/grunt-po2json-embed/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/andrewcharnley/grunt-po2json-embed/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.5",
+    "po2json" : "~0.0.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "readme": "",
+  "readmeFilename": "README.md",
+  "_id": "grunt-po2json-embed@0.1",
+  "_from": "grunt-po2json-embed@0.1"
+}
