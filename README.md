@@ -148,7 +148,7 @@ module.exports = function(grunt) {
             },
             transplant: {
                 files: ['translations/*.po'],
-                tasks: ['po2jsoninject']
+                tasks: ['po2jsonEmbed']
             },
 
         },
