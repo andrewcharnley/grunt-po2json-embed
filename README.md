@@ -1,4 +1,4 @@
-# grunt-xgettext
+# grunt-po2json-embed
 
 > A Grunt plugin to convert PO translation files into JSON objects which are then embedded into the original files.
 
@@ -51,12 +51,12 @@ grunt.loadNpmTasks('grunt-po2json-embed');
 ## The "po2json-embed" task
 
 ### Overview
-In your project's Gruntfile, add a section named `po2json-embed` to the data object passed into
+In your project's Gruntfile, add a section named `po2jsonEmbed` to the data object passed into
 `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  po2json-embed: {
+  po2jsonEmbed: {
     options: {
       functionName: "tr",
       poFiles: "translations",
