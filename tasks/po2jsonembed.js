@@ -38,18 +38,16 @@ module.exports = function(grunt) {
           });
       });
 
-      var content, newcontent;
+      var content, 
+      	newcontent;
 
       this.files.forEach(function (f) {
         f.src.forEach(function(file) {
 
           content = newcontent = grunt.file.read(file);
           
-          var replaceStrings = function(quote) {
+          ['"',"'"].forEach(function(quote) {
               var regex = new RegExp("" + fn + "\\(((?:" + quote + "(?:[^" + quote + "\\\\]|\\\\.)+" + quote + "\\s*)+)\\)", "g");
-              var subRE = new RegExp(quote + "((?:[^" + quote + "\\\\]|\\\\.)+)" + quote, "g");
-              var quoteRegex = new RegExp("\\\\" + quote, "g");
-
               newcontent = newcontent.replace(regex, function(v) {
                 v = v.substr(fn.length+2);
                 v = v.substr(0,v.length-2);
@@ -57,10 +55,7 @@ module.exports = function(grunt) {
                 o[options.defaultLanguage] = v;
                 return JSON.stringify(o);
               });
-          };
-
-          replaceStrings("'");
-          replaceStrings('"');
+          });
 
           if (newcontent !== content) {
             grunt.log.writeln('Embedded translations: '+file);
