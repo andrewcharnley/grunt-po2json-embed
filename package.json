@@ -32,10 +32,7 @@
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt": "~0.4.5",
-    "po2json" : "~0.0.1"
-  },
-  "dependencies": {
-    "po2json" : "~0.0.1"
+    "po2json" : "~0.3.2"
   },
   "peerDependencies": {
     "grunt": "~0.4.5"
