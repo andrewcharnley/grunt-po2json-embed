@@ -251,6 +251,10 @@ module.exports = function(grunt) {
 
 ## Release History
 
+### 1.0.0
+
+* Fixes blank strings being written for incomplete language translations.
+
 ### 0.1
 
 * Initial release. Implemented for Igaro App SPA JS Framework.
