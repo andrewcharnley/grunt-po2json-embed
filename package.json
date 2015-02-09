@@ -1,7 +1,7 @@
 {
   "name": "grunt-po2json-embed",
   "description": "Grunt plugin which takes PO files, creates JSON language and embeds into the original files.",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/andrewcharnley/grunt-po2json-embed",
   "author": {
     "name": "Andrew Charnley",

@@ -1,8 +1,7 @@
 /*
- * grunt-xgettext
- * https://github.com/arendjr/grunt-xgettext
+ * grunt-po2jsonEmbed
  *
- * Copyright (c) 2013-2014 Arend van Beelen, Speakap BV
+ * Copyright (c) 2015 Andrew Charnley, igaro.com
  * Licensed under the MIT license.
  */
 
@@ -23,18 +22,22 @@ module.exports = function(grunt) {
         data = {},
         fn = options.functionName;
 
-    var files = fs.readdirSync(dir)
+    var val,
+      json,
+      lang,
+      files = fs.readdirSync(dir)
       .filter(function(file) { return file.substr(-3) === '.po'; })
       .forEach(function(file) {
-          var json = po2json.parseFileSync(dir+'/'+file, {});
-          var lang = json[''].language;
+          json = po2json.parseFileSync(dir+'/'+file, {});
+          lang = json[''].language;
           grunt.log.writeln('Loaded PO file: '+lang);
           Object.keys(json).forEach(function (k) {
-              if (! k.length)
+              val = json[k][1];
+              if (! k.length || ! val.length)
                 return;
               if (!data[k])
                 data[k] = {};
-              data[k][lang] = json[k][1];
+              data[k][lang] = val;
           });
       });
 
